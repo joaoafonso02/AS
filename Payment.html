@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="assets/css/Payment.css" media="screen">
   <script class="u-script" type="text/javascript" src="assets/js/jquery.js" defer=""></script>
   <script class="u-script" type="text/javascript" src="assets/js/nicepage.js" defer=""></script>
+  <script class="u-script" type="text/javascript" src="assets/js/onlyOne.js" defer=""></script>
 </head>
 
 <body class="u-body u-stick-footer u-xl-mode">
@@ -175,15 +176,15 @@
                   <form action="#" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
                     source="custom" name="form-1" style="padding: 10px;">
                     <div class="u-form-checkbox u-form-group u-label-top u-form-group-9">
-                      <input type="checkbox" id="checkbox-7a74" name="checkbox" value="On">
+                      <input type="checkbox" name="check" onclick="onlyOne(this)" value="On">
                       <label for="checkbox-7a74" class="u-label u-label-8">Cartão Crédito/Débito</label>
                     </div>
                     <div class="u-form-checkbox u-form-group u-label-top u-form-group-10">
-                      <input type="checkbox" id="checkbox-95f1" name="checkbox-1" value="On">
+                      <input type="checkbox" name="check" onclick="onlyOne(this)" value="On">
                       <label for="checkbox-95f1" class="u-label u-label-9">Paypal</label>
                     </div>
                     <div class="u-form-checkbox u-form-group u-label-top u-form-group-11">
-                      <input type="checkbox" id="checkbox-fdc4" name="checkbox-2" value="On">
+                      <input type="checkbox" name="check" onclick="onlyOne(this)" value="On">
                       <label for="checkbox-fdc4" class="u-label u-label-10">MBWay</label>
                     </div>
                     <div class="u-align-center u-form-group u-form-submit u-label-top">
