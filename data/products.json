@@ -1,0 +1,96 @@
+{
+    "Fruits" : [
+        {
+            "Name" : "Alperce",
+            "Maker" : "Produtor A",
+            "Price" : 2.99,
+            "Description" : "Cultivado em zonas temperadas, o alperce é considerado um dos mais deliciosos frutos que existem.. O tipo deste alperce em particular é originário da China.",
+            "Energy" : "48Kcal",
+            "Protein" : "0.8g",
+            "CarboHydrates" : "8.5g",
+            "Fiber" : "4g"
+        },
+        {
+            "Name" : "Alperce",
+            "Maker" : "Produtor B",
+            "Price" : 3.99,
+            "Description" : "Cultivado em zonas temperadas, o alperce é considerado um dos mais deliciosos frutos que existem. O tipo deste alperce em particular é originário da Alemanha",
+            "Energy" : "53Kcal",
+            "Protein" : "0.9g",
+            "CarboHydrates" : "7g",
+            "Fiber" : "6g"
+        },
+        {
+            "Name" : "Banana",
+            "Maker" : "Produtor A",
+            "Price" : 1.99,
+            "Description" : "Cultivado em zonas temperadas, o alperce é considerado um dos mais deliciosos frutos que existem. O tipo deste alperce em particular é originário da Madeira",
+            "Energy" : "70Kcal",
+            "Protein" : "4g",
+            "CarboHydrates" : "2g",
+            "Fiber" : "8g"
+        },
+        {
+            "Name" : "Cereja",
+            "Maker" : "Produtor C",
+            "Price" : 2.50,
+            "Description" : "Cultivado em zonas temperadas, o alperce é considerado um dos mais deliciosos frutos que existem. O tipo desta cereja em particular é originária de Portugal",
+            "Energy" : "30Kcal",
+            "Protein" : "2g",
+            "CarboHydrates" : "1g",
+            "Fiber" : "2g"
+        },
+        {
+            "Name" : "Figo",
+            "Maker" : "Produtor A",
+            "Price" : 4.99,
+            "Description" : "Cultivado em zonas temperadas, o alperce é considerado um dos mais deliciosos frutos que existem. O tipo deste morango em particular é originária de Portugal",
+            "Energy" : "15Kcal",
+            "Protein" : "10g",
+            "CarboHydrates" : "6g",
+            "Fiber" : "8g"
+        },
+        {
+            "Name" : "Morango",
+            "Maker" : "Produtor B",
+            "Price" : 3.60,
+            "Description" : "Cultivado em zonas temperadas, o alperce é considerado um dos mais deliciosos frutos que existem. O tipo deste morango em particular é originária de Portugal",
+            "Energy" : "15Kcal",
+            "Protein" : "10g",
+            "CarboHydrates" : "6g",
+            "Fiber" : "8g"
+        },
+        {
+            "Name" : "Morango",
+            "Maker" : "Produtor C",
+            "Price" : 5.00,
+            "Description" : "Cultivado em zonas temperadas, o alperce é considerado um dos mais deliciosos frutos que existem. O tipo deste morango em particular é originária de Portugal",
+            "Energy" : "15Kcal",
+            "Protein" : "10g",
+            "CarboHydrates" : "6g",
+            "Fiber" : "8g"
+        }
+    ],
+
+    "Vegetables" : [
+        {
+            "name" : "view1",
+            "title" : "View 1"
+        },
+        {
+            "name" : "view2",
+            "title" : "View 2"
+        }
+    ],
+
+    "Grains" : [
+        {
+            "name" : "view1",
+            "title" : "View 1"
+        },
+        {
+            "name" : "view2",
+            "title" : "View 2"
+        }
+    ]
+}
