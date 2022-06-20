@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 // Configure Firebase
 const firebaseConfig = {
@@ -14,44 +14,24 @@ const app = initializeApp(firebaseConfig);
 
 export const signUpWithEmailPassword = async function (email, password) {
   try {
-    return await createUserWithEmailAndPassword(getAuth(), email, password).then((result) => {
-      return 0;
-    }
-    );
+    return await createUserWithEmailAndPassword(getAuth(), email, password);
   } catch (error) {
-    return error.code;
+    return "ERROR";
   }
 };
 
+export const signInWithEmailPassword = async function (email, password) {
+  try {
+    return await signInWithEmailAndPassword(getAuth(), email, password);
+  } catch (error) {
+    return "ERROR";
+  }
+};
 
-
-
-/*
-export function signUpWithEmailPassword(email, password) {
-  createUserWithEmailAndPassword(getAuth(), email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-    })
-    .catch((error) => {
-      console.log(error.code)
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // ..
-    });
-}
-
-export function signInWithEmailPassword(email, password) {
-  const auth = getAuth();
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorMessage);
-    });
-}
-*/
+export const endSession = async function () {
+  try {
+    return await signOut(getAuth());
+  } catch (error) {
+    return "ERROR";
+  }
+};

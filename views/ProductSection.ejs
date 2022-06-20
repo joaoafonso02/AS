@@ -17,14 +17,12 @@
     <div class="u-clearfix u-sheet u-sheet-1">
       <div class="u-align-left u-container-style u-group u-shape-rectangle u-group-1">
         <div class="u-container-layout u-container-layout-1">
-          <a href="Homepage.html">
             <img class="u-align-center u-image u-image-default u-preserve-proportions u-image-1"
               src="assets/images/logo.png" alt="" data-image-width="91" data-image-height="89" width="150" height="70">
-          </a>
         </div>
       </div>
-      <p class="u-align-center u-text u-text-custom-color-1 u-text-default u-text-1">FarmLink</p>
-      <a class="u-shopping-cart u-shopping-cart-1" href="#"><span
+      <a><p class="u-align-center u-text u-text-custom-color-1 u-text-default u-text-1">FarmLink</p></a>
+      <a class="u-shopping-cart u-shopping-cart-1"><span
           class="u-border-2 u-border-palette-1-base u-icon u-icon-circle u-shopping-cart-icon u-text-palette-1-base u-icon-1"><svg
             class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 16 16">
             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-3f15"></use>
@@ -34,11 +32,12 @@
 	S6,15.3,6,14.5S5.3,13,4.5,13L4.5,13z"></path>
           </svg>
           <span class="u-icon-circle u-palette-2-base u-shopping-cart-count"
-            style="font-size: 1.125rem; font-weight: 400;">0</span>
+            style="font-size: 1.125rem; font-weight: 400;"><%= session.cart.length%></span>
         </span>
       </a>
       <!--/shopping_cart-->
-      <span class="u-icon u-text-palette-1-base u-icon-2"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice"
+      <a>
+        <span class="u-icon u-text-palette-1-base u-icon-2"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice"
           viewBox="0 0 55 55">
           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-3dc8"></use>
         </svg><svg class="u-svg-content" viewBox="0 0 55 55" x="0px" y="0px" id="svg-3dc8"
@@ -76,19 +75,20 @@
 	l-0.248,0.283V39.8c0,1.612,0.896,3.062,2.338,3.782l8.467,4.233c0.054,0.027,0.107,0.055,0.16,0.083
 	C42.677,47.979,42.567,48.054,42.459,48.132z"></path>
         </svg></span>
+      </a>
 
       <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
       </nav>
 
       <h3 class="u-align-center u-headline u-text u-text-custom-color-1 u-text-2">
-        <a>Época de Junho</a>
+        <a href="/homepage">Época de Junho</a>
       </h3>
       <p class="u-align-center u-text u-text-default u-text-palette-1-base u-text-3">
-        <span style="font-weight: 700;">Minha Conta</span>
+        <a href="/orderHistory"><span style="font-weight: 700;">Minha Conta</span></a>
         <span style="font-weight: 700;"></span>
       </p>
       <p class="u-align-center u-text u-text-default u-text-palette-1-base u-text-4">
-        <span style="font-weight: 700;">Carrinho</span>
+        <a href="/cart"><span style="font-weight: 700;">Carrinho</span></a>
         <span style="font-weight: 700;"></span>
       </p>
     </div>
@@ -101,8 +101,14 @@
           <div class="u-layout-row">
             <div class="u-container-style u-layout-cell u-size-15 u-layout-cell-1">
               <div class="u-container-layout u-container-layout-1">
-                <form action="#" method="get"
-                  class="u-border-1 u-border-grey-30 u-search u-search-left u-white u-search-1">
+                <% if(productType == "Fruits"){%>
+                <form action="/fruitSearch" method="GET" >
+                <% } else if(productType == "Vegetables") {%>  
+                <form action="/vegetableSearch" method="GET">
+                <% } else if(productType == "Grains") { %>
+                <form action="/grainSearch" method="GET">
+                <% } %>  
+                  <class="u-border-1 u-border-grey-30 u-search u-search-left u-white u-search-1">
                   <button class="u-search-button" type="submit">
                     <span class="u-search-icon u-spacing-10">
                       <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 56.966 56.966">
@@ -117,88 +123,68 @@
                       </svg>
                     </span>
                   </button>
-                  <input class="u-search-input" type="search" name="search" value="" placeholder="Search">
-                </form>
+                  <input class="u-search-input" type="search" name="searchBar" id="searchBar" value="" placeholder="Search">
+                
                 <div class="u-align-left u-container-style u-group u-shape-rectangle u-group-1">
                   <div class="u-container-layout u-container-layout-2">
                     <label for="produtor">Por Produtor:</label>
-                    <select id="produtor">
-                      <option value="" selected>Procurar</option>
-                      <option value="Produtor A">Produtor A</option>
-                      <option value="Produtor B">Produtor B</option>
-                      <option value="Produtor C">Produtor C</option>
+                    <select name="produtores" id="produtor">
+                      <option value="" selected>Procurar</option>  
+                      <% if(products.length > 0) { %>
+                        <% var producerList = [] %>
+                        <% products.forEach(elem => {%>
+                          <%if(!producerList.includes(elem.Maker)){%>
+                            <%producerList.push(elem.Maker)%>
+                            <option value="<%=elem.Maker%>"><%= elem.Maker%></option>
+                          <%}%>
+                          <% })%>
+                      <% } %>
                     </select>
                   </div>
                 </div>
                 <div class="u-align-left u-container-style u-group u-shape-rectangle u-group-2">
                   <div class="u-container-layout u-container-layout-3">
                     &nbsp&nbsp<label for="produto">Por Produto:</label>
-                    <select id="produto">
+                    <select name="produtos" id="produto">
                       <option value="" selected>Procurar</option>
-                      <option value="Alperce">Alperce</option>
-                      <option value="Ameixa">Ameixa</option>
-                      <option value="Banana">Banana</option>
-                      <option value="Cereja">Cereja</option>
-                      <option value="Figo">Figo</option>
-                      <option value="Melão">Melão</option>
-                      <option value="Morango">Morango</option>
-                      <option value="Uva">Uva</option>
+                      <% if(products.length > 0) { %>
+                        <% var nameList = [] %>
+                        <% products.forEach(elem => {%>
+                          <%if(!nameList.includes(elem.Name)){%>
+                            <%producerList.push(elem.Name)%>
+                            <option value="<%=elem.Name%>"><%= elem.Name%></option>
+                          <%}%>
+                          <% })%>
+                      <% } %>
                     </select>
                   </div>
                 </div>
+              </form>
               </div>
             </div>
             <div class="u-container-style u-layout-cell u-size-45 u-layout-cell-2">
               <div class="u-container-layout u-container-layout-4">
                 <div class="u-align-center u-list u-list-1">
                   <div class="u-repeater u-repeater-1">
-                    <div class="u-container-style u-list-item u-repeater-item">
-                      <div class="u-container-layout u-similar-container u-container-layout-5">
-                        <img alt="" class="u-expanded-width u-image u-image-contain u-image-default u-image-1"
-                          data-image-width="515" data-image-height="515"
-                          src="assets/images/e9c71de224d7773bed0c1ee92d7c96ce.jpg">
-                        <h3 class="u-align-center u-text u-text-1">Produtor A</h3>
-                        <h3 class="u-align-center u-text u-text-default u-text-2">Alperce</h3>
-                        <p class="u-align-center u-text u-text-3">€2.99/kg<br>
-                        </p>
-                        <a href="#"
-                          class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-1">Adicionar
-                          ao carrinho</a>
-                        <a href="InfoProduct.html"
-                          class="u-border-none u-btn u-btn-round u-button-style u-grey-30 u-hover-grey-40 u-radius-50 u-btn-2">+Info</a>
+                    <% if(products.length > 0) {%>
+                      <% products.forEach(element => { %>
+                      <div class="u-container-style u-list-item u-repeater-item">
+                        <div class="u-container-layout u-similar-container u-container-layout-5">
+                          <img alt="" class="u-expanded-width u-image u-image-contain u-image-default u-image-1"
+                            data-image-width="515" data-image-height="515"
+                            src=<%=element.Image || element.image%>>
+                          <h3 class="u= lign-center u-text u-text-default u-text-2"><%= element.Maker %></h3>
+                          <h3 class="u-align-center u-text u-text-1"><%= element.Name %></h3>
+                          <h3 class="u-align-center u-text u-text-1"><%= element.Price %> €</h3>
+                          <a href="addToCart/<%=productType%>/<%=element.Id%>"
+                            class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-1">Adicionar
+                            ao carrinho</a>
+                          <a href="/productInfo/<%=productType%>/<%=element.Id%>"
+                            class="u-border-none u-btn u-btn-round u-button-style u-grey-30 u-hover-grey-40 u-radius-50 u-btn-2">+Info</a>
+                        </div>
                       </div>
-                    </div>
-                    <div class="u-container-style u-list-item u-repeater-item">
-                      <div class="u-container-layout u-similar-container u-container-layout-6">
-                        <img alt="" class="u-expanded-width u-image u-image-contain u-image-default u-image-2"
-                          data-image-width="2500" data-image-height="1751"
-                          src="assets/images/c958b8a183c61178b6e62b4527227869.jpg">
-                        <h3 class="u-align-center u-text u-text-4">Produtor A</h3>
-                        <h3 class="u-align-center u-text u-text-default u-text-5">Ameixa</h3>
-                        <p class="u-align-center u-text u-text-6">€5.99/kg<br>
-                        </p>
-                        <a href="#"
-                          class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-3">Adicionar
-                          ao carrinho</a>
-                        <a href="#"
-                          class="u-border-none u-btn u-btn-round u-button-style u-grey-30 u-hover-grey-40 u-radius-50 u-btn-4">+Info</a>
-                      </div>
-                    </div>
-                    <div class="u-container-style u-list-item u-repeater-item">
-                      <div class="u-container-layout u-similar-container u-container-layout-7">
-                        <img alt="" class="u-expanded-width u-image u-image-contain u-image-default u-image-3"
-                          data-image-width="1000" data-image-height="787"
-                          src="assets/images/c519d56c9c91d0d862f3b5596bc48f63.jpg">
-                        <h3 class="u-align-center u-text u-text-7">Produtor C</h3>
-                        <h3 class="u-align-center u-text u-text-default u-text-8">Banana</h3>
-                        <p class="u-align-center u-text u-text-9">€3.99/kg</p>
-                        <a href="#"
-                          class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-5">Adicionar
-                          ao carrinho</a>
-                        <a href="#"
-                          class="u-border-none u-btn u-btn-round u-button-style u-grey-30 u-hover-grey-40 u-radius-50 u-btn-6">+Info</a>
-                      </div>
-                    </div>
+                      <% }); %>
+                    <% }; %>
                   </div>
                 </div>
               </div>
@@ -211,12 +197,26 @@
 
   <footer class="u-align-center u-clearfix u-footer u-grey-10 u-footer" id="sec-984e">
     <div class="u-clearfix u-sheet u-sheet-1">
-      <p class="u-align-center u-small-text u-text u-text-variant u-text-1"><span style="font-weight: 700;"></span>@2022
-        FarmLink
-      </p>
+      <form action="/logout?_method=DELETE" method="post" id="logoutForm"> 
+        <button type="submit" style="color: red; text-align: left; border: none; background-color: transparent;" id="button">Pressione Aqui Para Encerrar Sessão</button>
+      </form>
     </div>
   </footer>
 
+  <style>
+    #button {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 22px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+}
+  </style>
+  
 </body>
 
 </html>

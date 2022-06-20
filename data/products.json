@@ -1,96 +1,145 @@
 {
     "Fruits" : [
         {
+            "Id": 1,
             "Name" : "Alperce",
             "Maker" : "Produtor A",
             "Price" : 2.99,
-            "Description" : "Cultivado em zonas temperadas, o alperce é considerado um dos mais deliciosos frutos que existem.. O tipo deste alperce em particular é originário da China.",
+            "Description" : "Cultivada em zonas temperadas, o alperce é considerado um dos mais deliciosos frutos que existem. O tipo deste alperce em particular é originário da China.",
             "Energy" : "48Kcal",
             "Protein" : "0.8g",
             "CarboHydrates" : "8.5g",
-            "Fiber" : "4g"
+            "Fiber" : "4g",
+            "Image" : "/assets/images/alperce.jpg"
         },
+
         {
-            "Name" : "Alperce",
-            "Maker" : "Produtor B",
-            "Price" : 3.99,
-            "Description" : "Cultivado em zonas temperadas, o alperce é considerado um dos mais deliciosos frutos que existem. O tipo deste alperce em particular é originário da Alemanha",
-            "Energy" : "53Kcal",
-            "Protein" : "0.9g",
-            "CarboHydrates" : "7g",
-            "Fiber" : "6g"
-        },
-        {
+            "Id": 2,
             "Name" : "Banana",
             "Maker" : "Produtor A",
             "Price" : 1.99,
-            "Description" : "Cultivado em zonas temperadas, o alperce é considerado um dos mais deliciosos frutos que existem. O tipo deste alperce em particular é originário da Madeira",
+            "Description" : "Cultivada em zonas temperadas, a banana é considerado um dos mais deliciosos frutos que existem. O tipo desta banana em particular é originária da Madeira",
             "Energy" : "70Kcal",
             "Protein" : "4g",
             "CarboHydrates" : "2g",
-            "Fiber" : "8g"
+            "Fiber" : "8g",
+            "Image" : "/assets/images/banana.jpg"
         },
         {
+            "Id": 3,
             "Name" : "Cereja",
             "Maker" : "Produtor C",
             "Price" : 2.50,
-            "Description" : "Cultivado em zonas temperadas, o alperce é considerado um dos mais deliciosos frutos que existem. O tipo desta cereja em particular é originária de Portugal",
+            "Description" : "Cultivada em zonas temperadas, a cereja é considerado um dos mais deliciosos frutos que existem. O tipo desta cereja em particular é originária de Portugal",
             "Energy" : "30Kcal",
             "Protein" : "2g",
             "CarboHydrates" : "1g",
-            "Fiber" : "2g"
+            "Fiber" : "2g",
+            "Image" : "/assets/images/cereja.jpg"
         },
         {
-            "Name" : "Figo",
-            "Maker" : "Produtor A",
-            "Price" : 4.99,
-            "Description" : "Cultivado em zonas temperadas, o alperce é considerado um dos mais deliciosos frutos que existem. O tipo deste morango em particular é originária de Portugal",
-            "Energy" : "15Kcal",
-            "Protein" : "10g",
-            "CarboHydrates" : "6g",
-            "Fiber" : "8g"
-        },
-        {
-            "Name" : "Morango",
+            "Id": 4,
+            "Name" : "Melão",
             "Maker" : "Produtor B",
             "Price" : 3.60,
-            "Description" : "Cultivado em zonas temperadas, o alperce é considerado um dos mais deliciosos frutos que existem. O tipo deste morango em particular é originária de Portugal",
+            "Description" : "Cultivado em zonas temperadas, o melão é considerado um dos mais deliciosos frutos que existem. O tipo deste melão em particular é originário de Portugal",
             "Energy" : "15Kcal",
             "Protein" : "10g",
             "CarboHydrates" : "6g",
-            "Fiber" : "8g"
+            "Fiber" : "8g",
+            "Image" : "/assets/images/melao.jpg"
         },
         {
+            "Id": 5,
             "Name" : "Morango",
             "Maker" : "Produtor C",
             "Price" : 5.00,
-            "Description" : "Cultivado em zonas temperadas, o alperce é considerado um dos mais deliciosos frutos que existem. O tipo deste morango em particular é originária de Portugal",
+            "Description" : "Cultivado em zonas temperadas, o morango é considerado um dos mais deliciosos frutos que existem. O tipo deste morango em particular é originário de Portugal",
             "Energy" : "15Kcal",
             "Protein" : "10g",
             "CarboHydrates" : "6g",
-            "Fiber" : "8g"
+            "Fiber" : "8g",
+            "Image" : "/assets/images/morango.jpg"
         }
     ],
 
     "Vegetables" : [
         {
-            "name" : "view1",
-            "title" : "View 1"
+            "Id": 6,
+            "Name" : "Couve",
+            "Maker" : "Produtor D",
+            "Price" : 6.66,
+            "Description" : "Cultivada em zonas temperadas, a couve é considerado uma dos mais nutritivos vegetais que existem. O tipo desta couve em particular é originária da Argentina.",
+            "Energy" : "50Kcal",
+            "Protein" : "4g",
+            "CarboHydrates" : "14g",
+            "Fiber" : "20g",
+            "Image" : "/assets/images/couve.jpg"
+        },
+
+        {
+            "Id": 7,
+            "Name" : "Batata",
+            "Maker" : "Produtor J",
+            "Price" : 3.45,
+            "Description" : "Cultivada em zonas temperadas, a batata é considerada uma dos mais nutritivos vegetais que existem. O tipo desta batata em particular é originário da Irlanda",
+            "Energy" : "63Kcal",
+            "Protein" : "2g",
+            "CarboHydrates" : "16g",
+            "Fiber" : "23g",
+            "Image" : "/assets/images/batata.jpg"
         },
         {
-            "name" : "view2",
-            "title" : "View 2"
+            "Id": 8,
+            "Name" : "Cenoura",
+            "Maker" : "Produtor P",
+            "Price" : 2.88,
+            "Description" : "Cultivada em zonas temperadas, a cenoura é considerada um dos mais nutritivos vegetais que existem. O tipo desta cenoura em particular é originária do Brazil",
+            "Energy" : "30Kcal",
+            "Protein" : "2g",
+            "CarboHydrates" : "1g",
+            "Fiber" : "2g",
+            "Image" : "/assets/images/cenoura.jpg"
         }
     ],
 
     "Grains" : [
         {
-            "name" : "view1",
-            "title" : "View 1"
+            "Id": 9,
+            "Name" : "Arroz",
+            "Maker" : "Produtor R",
+            "Price" : 1.00,
+            "Description" : "Cultivado em zonas temperadas, o arroz é considerada um dos mais saudaveis grãos que existem. O tipo deste arroz em particular é originário do Vietnam",
+            "Energy" : "50Kcal",
+            "Protein" : "4g",
+            "CarboHydrates" : "14g",
+            "Fiber" : "20g",
+            "Image" : "/assets/images/arroz.jpg"
+        },
+
+        {
+            "Id": 10,
+            "Name" : "Milho",
+            "Maker" : "Produtor T",
+            "Price" : 9.55,
+            "Description" : "Cultivado em zonas temperadas, o milho é considerada um dos mais saudaveis grãos que existem. O tipo deste milho em particular é originário da Inglaterra",
+            "Energy" : "63Kcal",
+            "Protein" : "2g",
+            "CarboHydrates" : "16g",
+            "Fiber" : "23g",
+            "Image" : "/assets/images/milho.jpg"
         },
         {
-            "name" : "view2",
-            "title" : "View 2"
+            "Id": 11,
+            "Name" : "Centeio",
+            "Maker" : "Produtor L",
+            "Price" : 6.87,
+            "Description" : "Cultivado em zonas temperadas, o centeio é considerada um dos mais saudaveis grãos que existem. O tipo deste centeio em particular é originário da Ucrania",
+            "Energy" : "50Kcal",
+            "Protein" : "0.9g",
+            "CarboHydrates" : "25g",
+            "Fiber" : "30g",
+            "Image" : "/assets/images/centeio.jpg"
         }
     ]
 }
