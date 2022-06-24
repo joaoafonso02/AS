@@ -58,11 +58,33 @@ const loggedOn = (req, res, next) => {
 
 // GET requests
 app.get('/', loggedOn, (req, res) => {
-    res.render('index');
+    if(req.query.code == "1"){
+        res.render('index', {flag: 1});
+    }
+    else if(req.query.code == "2"){
+        res.render('index', {flag: 2});
+    }
+    else if(req.query.code == "3"){
+        res.render('index', {flag: 3});
+    }
+    else{
+        res.render('index', {flag: 0});
+    }
 });
 
 app.get('/signUp', loggedOn, (req, res) => {
-    res.render('SignUp')
+    if(req.query.code == "1"){
+        res.render('SignUp', {flag: 1});
+    }
+    else if(req.query.code == "2"){
+        res.render('SignUp', {flag: 2});
+    }
+    else if(req.query.code == "3"){
+        res.render('SignUp', {flag: 3});
+    }
+    else{
+        res.render('SignUp', {flag: 0});
+    }
 })
 
 app.get('/cart', notLoggedOn, (req, res) => {
@@ -234,7 +256,7 @@ app.get('/addCart/:type', notLoggedOn, (req, res) => {
     if(!presentInCart){
         req.session.cart.push(productData)
     }
-    res.render('addToCart', {data: productData, session: req.session, 'productType': req.params.type})
+    res.render('AddToCart', {data: productData, session: req.session, 'productType': req.params.type})
 })
 
 app.get('/removeCart', notLoggedOn, (req, res) => {
@@ -297,30 +319,42 @@ app.get('/orderHistory', notLoggedOn, (req, res) => {
 // POST REQUESTS
 app.post('/register', (req, res) => {
     signUpWithEmailPassword(req.body.email, req.body.password).then((result) =>{
-        if(result != "ERROR"){
+        if(result!="ERROR" && result!=1 && result!=2){
             if(typeof req.session.userId == 'undefined') {
                 req.session.cart = []
                 req.session.userEmail = req.body.email
             }
             res.redirect('/homepage');
         }
+        else if(result == 1){
+            res.redirect('/signUp/?code=1');
+        }
+        else if(result == 2){
+            res.redirect('/signUp/?code=2');
+        }
         else{
-            res.redirect('/signUp');
+            res.redirect('/signUp/?code=3');
         }
     })
 });
 
 app.post('/login', (req, res) => {
     signInWithEmailPassword(req.body.email, req.body.password).then((result) =>{
-        if(result!="ERROR"){
+        if(result!="ERROR" && result!=1 && result!=2){
             if(typeof req.session.userId == 'undefined') {
                 req.session.cart = []
                 req.session.userEmail = req.body.email
             }
             res.redirect('/homepage');
         }
+        else if(result == 1){
+            res.redirect('/?code=1');
+        }
+        else if(result == 2){
+            res.redirect('/?code=2');
+        }
         else{
-            res.redirect('/');
+            res.redirect('/?code=3');
         }
     })
 });
@@ -339,5 +373,5 @@ app.post('/logout', (req, res) => {
 
 // 404 REQUESTS
 app.get('*', function(req, res){
-    res.status(404).send('A página a que tentou aceder não existe');
+    res.status(404).send('FarmLink não conseguiu encontrar o seu pedido!');
   });

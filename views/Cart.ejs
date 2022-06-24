@@ -4,7 +4,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
-  <title>Cart</title>
+  <title>Carrinho</title>
   <link rel="icon" href="/assets/images/logo.png">
   <link rel="stylesheet" href="/assets/css/nicepage.css" media="screen">
   <link rel="stylesheet" href="/assets/css/Cart.css" media="screen">
@@ -17,11 +17,13 @@
     <div class="u-clearfix u-sheet u-sheet-1">
       <div class="u-align-left u-container-style u-group u-shape-rectangle u-group-1">
         <div class="u-container-layout u-container-layout-1">
-            <img class="u-align-center u-image u-image-default u-preserve-proportions u-image-1"
-              src="/assets/images/logo.png" alt="" data-image-width="91" data-image-height="89" width="150" height="70">
+          <img class="u-align-center u-image u-image-default u-preserve-proportions u-image-1"
+            src="/assets/images/logo.png" alt="" data-image-width="91" data-image-height="89" width="150" height="70">
         </div>
       </div>
-      <a><p class="u-align-center u-text u-text-custom-color-1 u-text-default u-text-1">FarmLink</p></a>
+      <a>
+        <p class="u-align-center u-text u-text-custom-color-1 u-text-default u-text-1">FarmLink</p>
+      </a>
       <a class="u-shopping-cart u-shopping-cart-1"><span
           class="u-border-2 u-border-palette-1-base u-icon u-icon-circle u-shopping-cart-icon u-text-palette-1-base u-icon-1"><svg
             class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 16 16">
@@ -32,17 +34,19 @@
 	S6,15.3,6,14.5S5.3,13,4.5,13L4.5,13z"></path>
           </svg>
           <span class="u-icon-circle u-palette-2-base u-shopping-cart-count"
-            style="font-size: 1.125rem; font-weight: 400;"><%= session.cart.length%></span>
+            style="font-size: 1.125rem; font-weight: 400;">
+            <%= session.cart.length%>
+          </span>
         </span>
       </a>
       <!--/shopping_cart-->
       <a>
         <span class="u-icon u-text-palette-1-base u-icon-2"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice"
-          viewBox="0 0 55 55">
-          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-3dc8"></use>
-        </svg><svg class="u-svg-content" viewBox="0 0 55 55" x="0px" y="0px" id="svg-3dc8"
-          style="enable-background:new 0 0 55 55;">
-          <path d="M55,27.5C55,12.337,42.663,0,27.5,0S0,12.337,0,27.5c0,8.009,3.444,15.228,8.926,20.258l-0.026,0.023l0.892,0.752
+            viewBox="0 0 55 55">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-3dc8"></use>
+          </svg><svg class="u-svg-content" viewBox="0 0 55 55" x="0px" y="0px" id="svg-3dc8"
+            style="enable-background:new 0 0 55 55;">
+            <path d="M55,27.5C55,12.337,42.663,0,27.5,0S0,12.337,0,27.5c0,8.009,3.444,15.228,8.926,20.258l-0.026,0.023l0.892,0.752
 	c0.058,0.049,0.121,0.089,0.179,0.137c0.474,0.393,0.965,0.766,1.465,1.127c0.162,0.117,0.324,0.234,0.489,0.348
 	c0.534,0.368,1.082,0.717,1.642,1.048c0.122,0.072,0.245,0.142,0.368,0.212c0.613,0.349,1.239,0.678,1.88,0.98
 	c0.047,0.022,0.095,0.042,0.142,0.064c2.089,0.971,4.319,1.684,6.651,2.105c0.061,0.011,0.122,0.022,0.184,0.033
@@ -74,7 +78,7 @@
 	c0,0.713-0.485,1.36-1.181,1.575l-0.497,0.153l-0.16,0.495c-0.59,1.833-1.43,3.526-2.496,5.032c-0.262,0.37-0.517,0.698-0.736,0.949
 	l-0.248,0.283V39.8c0,1.612,0.896,3.062,2.338,3.782l8.467,4.233c0.054,0.027,0.107,0.055,0.16,0.083
 	C42.677,47.979,42.567,48.054,42.459,48.132z"></path>
-        </svg></span>
+          </svg></span>
       </a>
 
       <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
@@ -93,98 +97,102 @@
       </p>
     </div>
   </header>
-  
+
   <div class="Container">
     <div class="CartContainer">
-      <% var finalPrice = 0%>
-      <% if(session.cart.length > 0){%>
-        <% session.cart.forEach(elem => { %>
-          <% finalPrice = finalPrice + parseFloat(elem.totalPrice)%>
-        <div class="Cart-Items">
-          <div class="image-box">
-            <img src=<%=elem.Image || elem.image%> style=height:120px />
-          </div>
-          <div class="about">
-            <h1 class="title"><Alperce></h1>
-            <h3 class="subtitle"><%=elem.name%></h3>
-            <h4 style="font-size: 15px;"><%= elem.price.toFixed(2)%>€/kg</h4>
-          </div>
-          <div class="counter">
-            <div class="count"><%= elem.weight%>Kg</div>
-          </div>
-          <div class="prices">
-            <div class="amount"><%=elem.totalPrice.toFixed(2)%>€</div>
-            <form method="GET" action="/removeCart">
-              <button class="remove" name="productId" value="<%= elem.id %>" type="submit"><u>Remover</u></button>
-            </form>
-            
-          </div>
-        </div>
-        <%})%>
-      <%}%>
-      <hr>
-      <div class="checkout">
-        <div class="total">
-          <div>
-            <div class="Subtotal">Sub-Total (<%=finalPrice.toFixed(2)%>)</div>
-            <% if(session.cart.length == 1) {%>
-            <div class="items">1 item</div>
-            <% } else {%>
-            <div class="items"><%= session.cart.length%> items</div>
-            <% }%>
-            <div class="items" style="padding-top: 10px;">Entrega (3.00€)</div>
-          </div>
+      <% var finalPrice=0%>
+        <% if(session.cart.length> 0){%>
+          <% session.cart.forEach(elem=> { %>
+            <% finalPrice=finalPrice + parseFloat(elem.totalPrice)%>
+              <div class="Cart-Items">
+                <div class="image-box">
+                  <img src=<%=elem.Image || elem.image%> style=height:120px />
+                </div>
+                <div class="about">
+                  <h1 class="title">
+                    <%=elem.name%>
+                  </h1>
+                  <h3 class="subtitle">
+                    <%=elem.maker%>
+                  </h3>
+                  <h4 style="font-size: 15px;">
+                    <%= (elem.price).toFixed(2)%>€/kg
+                  </h4>
+                </div>
+                <div class="counter">
+                  <div class="count">
+                    <%= elem.weight%>Kg
+                  </div>
+                </div>
+                <div class="prices">
+                  <div class="amount">
+                    <%=(elem.totalPrice).toFixed(2)%>€
+                  </div>
+                  <form method="GET" action="/removeCart">
+                    <button class="remove" name="productId" value="<%= elem.id %>" type="submit"><u>Remover</u></button>
+                  </form>
 
-          <% if(session.cart.length == 0){ %>
-            <div class="total-amount"><%= (finalPrice).toFixed(2)%>€</div>
-          <% } else{ %>  
-            <div class="total-amount"><%= (finalPrice+3).toFixed(2)%>€</div>
-         <% } %>
-                    
-        </div>
-        <a href="/payment"><button class="button" style="color: rgb(255, 255, 255);">Checkout</button></a>
-        <a href="/homepage"><button class="button"
-            style="color: rgb(255, 255, 255); background-color: gray;">Continuar a
-            comprar</button></a>
-      </div>
+                </div>
+              </div>
+              <%})%>
+                <%}%>
+                  <hr>
+                  <div class="checkout">
+                    <div class="total">
+                      <div>
+                        <div class="Subtotal">Sub-Total (<%=(finalPrice).toFixed(2)%>)</div>
+                        <% if(session.cart.length==1) {%>
+                          <div class="items">1 item</div>
+                          <% } else {%>
+                            <div class="items">
+                              <%= session.cart.length%> items
+                            </div>
+                            <% }%>
+                              <div class="items" style="padding-top: 10px;">Entrega (3.00€)</div>
+                      </div>
+
+                      <% if(session.cart.length==0){ %>
+                        <div class="total-amount">
+                          <%= (finalPrice).toFixed(2)%>€
+                        </div>
+                        <% } else{ %>
+                          <div class="total-amount">
+                            <%= (finalPrice+3).toFixed(2)%>€
+                          </div>
+                          <% } %>
+
+                    </div>
+                    <a href="/payment"><button class="button" style="color: rgb(255, 255, 255);">Checkout</button></a>
+                    <a href="/homepage"><button class="button"
+                        style="color: rgb(255, 255, 255); background-color: gray;">Continuar a
+                        comprar</button></a>
+                  </div>
     </div>
   </div>
 
   <footer class="u-align-center u-clearfix u-footer u-grey-10 u-footer" id="sec-984e">
     <div class="u-clearfix u-sheet u-sheet-1">
-      <form action="/logout?_method=DELETE" method="post" id="logoutForm"> 
-        <button type="submit" style="color: red; text-align: left; border: none; background-color: transparent;" id="button">Pressione Aqui Para Encerrar Sessão</button>
+      <form action="/logout?_method=DELETE" method="post" id="logoutForm">
+        <button type="submit" style="color: red; text-align: left; border: none; background-color: transparent;"
+          id="button">Pressione Aqui Para Encerrar Sessão</button>
       </form>
     </div>
   </footer>
 
   <style>
     #button {
-  background-color: red;
-  border: none;
-  color: white;
-  padding: 22px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 20px;
-  font-weight: bold;
-}
+      background-color: red;
+      border: none;
+      color: white;
+      padding: 22px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 20px;
+      font-weight: bold;
+    }
   </style>
 
 </body>
 
-<script>
-  function removeFromCart(){
-    console.log("ola")
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://localhost:8080/removeCart");
-
-    data = {
-      id: 'cota'
-    }
-    xhr.send(data)
-  }
-  
-</script>
 </html>

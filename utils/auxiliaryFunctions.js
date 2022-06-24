@@ -16,15 +16,31 @@ export const signUpWithEmailPassword = async function (email, password) {
   try {
     return await createUserWithEmailAndPassword(getAuth(), email, password);
   } catch (error) {
-    return "ERROR";
+    if(error.code == 'auth/weak-password'){
+      return 1;
+    }
+    else if(error.code == 'auth/email-already-in-use'){
+      return 2;
+    }
+    else{
+      return "ERROR";
+    }
   }
 };
 
-export const signInWithEmailPassword = async function (email, password) {
+export const signInWithEmailPassword = async function (email, password){
   try {
     return await signInWithEmailAndPassword(getAuth(), email, password);
   } catch (error) {
-    return "ERROR";
+    if(error.code == 'auth/wrong-password'){
+      return 1;
+    }
+    else if(error.code == 'auth/user-not-found'){
+      return 2;
+    }
+    else{
+      return "ERROR";
+    }
   }
 };
 

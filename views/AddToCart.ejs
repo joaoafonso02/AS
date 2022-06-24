@@ -4,7 +4,8 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
-  <title>Add To Cart</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline'">
+  <title>Adicionar a Carrinho</title>
   <link rel="icon" href="/assets/images/logo.png">
   <link rel="stylesheet" href="/assets/css/nicepage.css" media="screen">
   <link rel="stylesheet" href="/assets/css/AddToCart.css" media="screen">
@@ -17,11 +18,13 @@
     <div class="u-clearfix u-sheet u-sheet-1">
       <div class="u-align-left u-container-style u-group u-shape-rectangle u-group-1">
         <div class="u-container-layout u-container-layout-1">
-            <img class="u-align-center u-image u-image-default u-preserve-proportions u-image-1"
-              src="/assets/images/logo.png" alt="" data-image-width="91" data-image-height="89" width="150" height="70">
+          <img class="u-align-center u-image u-image-default u-preserve-proportions u-image-1"
+            src="/assets/images/logo.png" alt="" data-image-width="91" data-image-height="89" width="150" height="70">
         </div>
       </div>
-      <a><p class="u-align-center u-text u-text-custom-color-1 u-text-default u-text-1">FarmLink</p></a>
+      <a>
+        <p class="u-align-center u-text u-text-custom-color-1 u-text-default u-text-1">FarmLink</p>
+      </a>
       <a class="u-shopping-cart u-shopping-cart-1"><span
           class="u-border-2 u-border-palette-1-base u-icon u-icon-circle u-shopping-cart-icon u-text-palette-1-base u-icon-1"><svg
             class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 16 16">
@@ -32,17 +35,19 @@
 	S6,15.3,6,14.5S5.3,13,4.5,13L4.5,13z"></path>
           </svg>
           <span class="u-icon-circle u-palette-2-base u-shopping-cart-count"
-            style="font-size: 1.125rem; font-weight: 400;"><%= session.cart.length%></span>
+            style="font-size: 1.125rem; font-weight: 400;">
+            <%= session.cart.length%>
+          </span>
         </span>
       </a>
       <!--/shopping_cart-->
       <a>
         <span class="u-icon u-text-palette-1-base u-icon-2"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice"
-          viewBox="0 0 55 55">
-          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-3dc8"></use>
-        </svg><svg class="u-svg-content" viewBox="0 0 55 55" x="0px" y="0px" id="svg-3dc8"
-          style="enable-background:new 0 0 55 55;">
-          <path d="M55,27.5C55,12.337,42.663,0,27.5,0S0,12.337,0,27.5c0,8.009,3.444,15.228,8.926,20.258l-0.026,0.023l0.892,0.752
+            viewBox="0 0 55 55">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-3dc8"></use>
+          </svg><svg class="u-svg-content" viewBox="0 0 55 55" x="0px" y="0px" id="svg-3dc8"
+            style="enable-background:new 0 0 55 55;">
+            <path d="M55,27.5C55,12.337,42.663,0,27.5,0S0,12.337,0,27.5c0,8.009,3.444,15.228,8.926,20.258l-0.026,0.023l0.892,0.752
 	c0.058,0.049,0.121,0.089,0.179,0.137c0.474,0.393,0.965,0.766,1.465,1.127c0.162,0.117,0.324,0.234,0.489,0.348
 	c0.534,0.368,1.082,0.717,1.642,1.048c0.122,0.072,0.245,0.142,0.368,0.212c0.613,0.349,1.239,0.678,1.88,0.98
 	c0.047,0.022,0.095,0.042,0.142,0.064c2.089,0.971,4.319,1.684,6.651,2.105c0.061,0.011,0.122,0.022,0.184,0.033
@@ -74,7 +79,7 @@
 	c0,0.713-0.485,1.36-1.181,1.575l-0.497,0.153l-0.16,0.495c-0.59,1.833-1.43,3.526-2.496,5.032c-0.262,0.37-0.517,0.698-0.736,0.949
 	l-0.248,0.283V39.8c0,1.612,0.896,3.062,2.338,3.782l8.467,4.233c0.054,0.027,0.107,0.055,0.16,0.083
 	C42.677,47.979,42.567,48.054,42.459,48.132z"></path>
-        </svg></span>
+          </svg></span>
       </a>
 
       <nav class="u-menu u-menu-dropdown u-offcanvas u-menu-1">
@@ -114,27 +119,36 @@
                 <img
                   class="u-align-center u-image u-image-contain u-image-round u-preserve-proportions u-radius-10 u-image-1"
                   src=<%=data.Image || data.image%> alt="" data-image-width="100"
-                  data-image-height="515">
-                <h2 class="u-align-center u-text u-text-default u-text-palette-2-base u-text-1"><%=data.Price || data.price%>€/Kg</h2>
+                data-image-height="515">
+                <h2 class="u-align-center u-text u-text-default u-text-palette-2-base u-text-1">
+                  <%=data.Price || data.price%>€/Kg
+                </h2>
               </div>
             </div>
             <div class="u-container-style u-layout-cell u-size-39 u-layout-cell-4">
               <div class="u-container-layout u-container-layout-4">
                 <div class="u-form u-form-1">
-                  <form action="/addCart/<%=productType%>" method="GET" style="padding: 15px;" >
-                    <h3  class="u-text u-text-default u-text-2"><%=data.Maker || data.maker%></h3>
-                    <h2  class="u-text u-text-default u-text-3"><%=data.Name || data.name%></h2>
-                    <h5  class="u-text u-text-default u-text-4">Peso Total (kg):</h5>
+                  <form action="/addCart/<%=productType%>" method="GET" style="padding: 15px;">
+                    <h3 class="u-text u-text-default u-text-2">
+                      <%=data.Maker || data.maker%>
+                    </h3>
+                    <h2 class="u-text u-text-default u-text-3">
+                      <%=data.Name || data.name%>
+                    </h2>
+                    <h5 class="u-text u-text-default u-text-4">Peso Total (kg):</h5>
                     <label for="email-ef64" class="u-form-control-hidden u-label"></label>
-                    <input type="number" min="1" max="100" placeholder="Kg" id="kg" type="submit" name="kg" class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
+                    <input type="number" min="1" max="100" placeholder="Kg" id="kg" type="submit" name="kg"
+                      class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required=>
                     <div class="u-align-right u-form-group u-form-submit">
-                      <button  value="submit" class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-radius-6 u-btn-1" onclick="message()">Confirmar</button>
-                      <input  value="submit" class="u-form-control-hidden">
+                      <button value="submit"
+                        class="u-border-none u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-radius-6 u-btn-1"
+                        onclick="showMessage()">Confirmar</button>
+                      <input value="submit" class="u-form-control-hidden">
                     </div>
                     <input type="hidden" value="<%=data.Id%>" name="productId">
                   </form>
                 </div>
-                <a onclick="window.history.back()"
+                <a onclick="goBack()"
                   class="u-border-none u-btn u-btn-round u-button-style u-grey-25 u-hover-grey-30 u-radius-6 u-btn-2">Cancelar</a>
               </div>
             </div>
@@ -146,31 +160,43 @@
 
   <footer class="u-align-center u-clearfix u-footer u-grey-10 u-footer" id="sec-984e">
     <div class="u-clearfix u-sheet u-sheet-1">
-      <form action="/logout?_method=DELETE" method="post" id="logoutForm"> 
-        <button type="submit" style="color: red; text-align: left; border: none; background-color: transparent;" id="button">Pressione Aqui Para Encerrar Sessão</button>
+      <form action="/logout?_method=DELETE" method="post" id="logoutForm">
+        <button type="submit" style="color: red; text-align: left; border: none; background-color: transparent;"
+          id="button">Pressione Aqui Para Encerrar Sessão</button>
       </form>
     </div>
   </footer>
 
+  <script>
+    function showMessage() {
+      var myInput = document.getElementById("kg");
+      if (myInput && myInput.value >= 1) {
+        alert("Produto adicionado ao carrinho com sucesso!");
+      }
+      else{
+        alert("ERRO: Por favor selecione a quantidade de produto que deseja!");
+      }
+    }
+
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+
   <style>
     #button {
-  background-color: red;
-  border: none;
-  color: white;
-  padding: 22px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 20px;
-  font-weight: bold;
-}
+      background-color: red;
+      border: none;
+      color: white;
+      padding: 22px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 20px;
+      font-weight: bold;
+    }
   </style>
 
-<script>
-function message() {
-  alert("Adicionado ao carrinho com sucesso!");
-}
-</script>
 
 </body>
 
